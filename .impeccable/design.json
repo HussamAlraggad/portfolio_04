@@ -114,8 +114,12 @@
       "display": { "displayName": "Display", "purpose": "The name only. Nothing competes with it." },
       "headline": { "displayName": "Headline", "purpose": "Section titles: Records, Channels." },
       "title": { "displayName": "Title", "purpose": "Record names in the list." },
+      "lead": { "displayName": "Lead", "purpose": "Channel handles, the one value set at reading scale." },
       "body": { "displayName": "Body", "purpose": "Claims and project summaries, 46ch maximum." },
-      "label": { "displayName": "Label", "purpose": "Metadata, units, timestamps and control text. Always mono." }
+      "small": { "displayName": "Small", "purpose": "Record summaries and inline explanations." },
+      "label": { "displayName": "Label", "purpose": "Metadata, units, timestamps and control text. Always mono." },
+      "label-sm": { "displayName": "Label small", "purpose": "Primary action and event rows, where 10px would crowd." },
+      "value": { "displayName": "Value", "purpose": "Measured figures in telemetry, tabular by default." }
     },
     "shadows": [
       {

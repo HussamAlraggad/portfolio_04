@@ -29,11 +29,23 @@ typography:
     fontWeight: 500
     lineHeight: 1.5
     letterSpacing: "-0.02em"
+  lead:
+    fontFamily: "Archivo, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "17px"
+    fontWeight: 400
+    lineHeight: 1.4
+    letterSpacing: "-0.01em"
   body:
     fontFamily: "Archivo, ui-sans-serif, system-ui, sans-serif"
     fontSize: "15px"
     fontWeight: 400
     lineHeight: 1.625
+    letterSpacing: "normal"
+  small:
+    fontFamily: "Archivo, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "13px"
+    fontWeight: 400
+    lineHeight: 1.65
     letterSpacing: "normal"
   label:
     fontFamily: "JetBrains Mono, ui-monospace, monospace"
@@ -41,6 +53,20 @@ typography:
     fontWeight: 400
     lineHeight: 1.5
     letterSpacing: "0.22em"
+    fontFeature: "tnum"
+  label-sm:
+    fontFamily: "JetBrains Mono, ui-monospace, monospace"
+    fontSize: "11px"
+    fontWeight: 400
+    lineHeight: 1.5
+    letterSpacing: "0.22em"
+    fontFeature: "tnum"
+  value:
+    fontFamily: "JetBrains Mono, ui-monospace, monospace"
+    fontSize: "12px"
+    fontWeight: 400
+    lineHeight: 1.5
+    letterSpacing: "normal"
     fontFeature: "tnum"
 rounded:
   none: "0px"
@@ -152,8 +178,12 @@ A dark instrument at rest, marked in chalk, with a single live signal.
 - **Display** (500, clamp(2.75rem, 6vw, 6rem), 0.92, -0.035em): the name only. Nothing else in the system competes with it.
 - **Headline** (500, clamp(1.6rem, 3vw, 2.4rem), 1.1, -0.03em): section titles — Records, Channels.
 - **Title** (500, 20px, 1.5, -0.02em): record names.
+- **Lead** (400, 17px, 1.4, -0.01em): channel handles, the one place a value is set at reading scale.
 - **Body** (400, 15px, 1.625): claims and project summaries, held to 46ch or less.
+- **Small** (400, 13px, 1.65): project summaries in the record list and inline explanations.
 - **Label** (400, 10px, 1.5, 0.22em, uppercase): metadata, units, timestamps, control text. Always mono.
+- **Label small** (400, 11px, 1.5, 0.22em, uppercase): the primary action and event rows, where 10px would crowd.
+- **Value** (400, 12px, 1.5): measured figures in the telemetry column, tabular by default.
 
 ### Named Rules
 

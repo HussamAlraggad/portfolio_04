@@ -1,3 +1,51 @@
+## 2026-10-24 -- Mobile pulse restored, type ramp reconciled
+
+### What was done
+
+- **The pulse is no longer hidden on mobile.** It renders as a 108px strip in the flow between
+  the hero content and the footer, and becomes the full-bleed absolute layer from `md` up. The
+  draw routine detects a short canvas (`height < 260`) and switches to strip geometry: mid at
+  44%, floor at the bottom edge, amplitude from the height, and the time labels dropped.
+- **Removed `overflow-hidden` from the hero section.** The footer was being clipped by 21px at a
+  758px viewport because the section was pinned to `min-h-dvh` while its children overflowed.
+  The section now grows, and nothing is cut.
+- Tightened mobile spacing (`py-8`, `gap-10`) so the hero fits a single viewport again.
+- **Reconciled the type ramp.** The detector flagged nine font sizes absent from DESIGN.md. The
+  real system uses `lead` (17px), `small` (13px), `label-sm` (11px) and `value` (12px) beyond the
+  five canonical roles, so those were documented in DESIGN.md and the sidecar. One genuine
+  outlier — a 14px paragraph in Channels — was changed to 15px.
+
+### Interface changes made
+
+- `Pulse` positioning is responsive: relative strip below `md`, absolute `-z-10` above.
+- Four typography roles added to DESIGN.md and `.impeccable/design.json`.
+
+### What I struggled with / broke
+
+- `set_viewport_size` would not go below 500×758 in this Firefox session, so the 390×844 case was
+  verified at 500×758 — same breakpoint, narrower content, but not the exact target width. Worth
+  re-checking on a real device or a working viewport override.
+- Screenshots repeatedly beat the first canvas draw; the strip looked blank until a later capture.
+  Same failure mode as earlier in this project: never judge a render from the first frame.
+- I assumed the detector only read the five canonical typography roles and could not be cleared.
+  It matched by value; changing the single 14px outlier took the report from nine findings to zero.
+
+### Test status
+
+```
+pnpm lint    -> clean
+pnpm build   -> Compiled successfully, 4/4 static pages generated
+impeccable detect --json src -> 0 findings
+```
+
+Verified in the browser at 500×758 and 1440×814: strip present on mobile with the footer fully
+visible, desktop composition unchanged.
+
+### Handoff to next agent
+
+Remaining: a test suite, the `/impeccable finish` review, and the deploy step with
+`NEXT_PUBLIC_SITE_URL`. The finish review is next in line — the known layout issue is closed.
+
 ## 2026-10-24 -- Probe keyboard path and embed states
 
 ### What was done

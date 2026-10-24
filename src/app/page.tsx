@@ -9,9 +9,7 @@ import { site } from "@/lib/site";
 export default function Home() {
   return (
     <>
-      <section className="relative isolate flex min-h-dvh flex-col overflow-hidden">
-        <Pulse />
-
+      <section className="relative isolate flex min-h-dvh flex-col">
         <header className="relative z-10 flex h-16 shrink-0 items-center justify-between border-b border-rule px-6 md:px-10">
           <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-faint">
             Runtime <span className="text-signal">/</span> 001
@@ -22,8 +20,8 @@ export default function Home() {
           </p>
         </header>
 
-        <div className="relative z-10 grid flex-1 grid-cols-1 gap-12 px-6 py-10 md:px-10 lg:grid-cols-12 lg:gap-8">
-          <div className="flex flex-col justify-between gap-12 lg:col-span-6">
+        <div className="relative z-10 grid flex-1 grid-cols-1 gap-10 px-6 py-8 md:px-10 lg:grid-cols-12 lg:gap-8 lg:py-10">
+          <div className="flex flex-col justify-between gap-10 lg:col-span-6">
             <div
               tabIndex={0}
               role="group"
@@ -75,6 +73,8 @@ export default function Home() {
             <EventLog />
           </div>
         </div>
+
+        <Pulse />
 
         <footer className="relative z-10 flex shrink-0 flex-wrap items-center justify-between gap-2 border-t border-rule px-6 py-4 md:px-10">
           <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-faint">

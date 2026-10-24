@@ -16,7 +16,7 @@ export default function Channels() {
         </p>
       </div>
 
-      <p className="mt-4 max-w-[46ch] text-[14px] leading-relaxed text-dim">
+      <p className="mt-4 max-w-[46ch] text-[15px] leading-relaxed text-dim">
         Any of these reaches me. Email is the one I answer first.
       </p>
 

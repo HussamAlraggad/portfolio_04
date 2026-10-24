@@ -52,16 +52,17 @@ export default function Pulse() {
 
     const draw = (now = performance.now()) => {
       if (width === 0 || height === 0) return;
-      const narrow = width < 640;
-      const mid = height * (narrow ? 0.76 : 0.56);
-      const floor = mid + (narrow ? 86 : 168);
+      const strip = height < 260;
+      const mid = strip ? height * 0.44 : height * 0.56;
+      const floor = strip ? height - 4 : mid + 168;
+      const amp = strip ? height * 0.36 : AMPLITUDE;
       const step = width / (CAPACITY - 1);
 
       ctx.clearRect(0, 0, width, height);
 
       const point = (index: number) => {
         const value = (deltas[index] - TARGET_FRAME) * SENSITIVITY;
-        return mid - clamp(value, -AMPLITUDE, AMPLITUDE);
+        return mid - clamp(value, -amp, amp);
       };
 
       ctx.strokeStyle = "rgba(233,234,231,0.03)";
@@ -145,10 +146,12 @@ export default function Pulse() {
       }
 
       ctx.fillStyle = "rgba(233,234,231,0.4)";
-      ctx.fillText("16.7 ms budget", 24, mid - 14);
-      ctx.fillStyle = "rgba(233,234,231,0.22)";
-      ctx.fillText("-5 s", 24, floor + 18);
-      ctx.fillText("now", width - 52, floor + 18);
+      ctx.fillText("16.7 ms budget", 24, strip ? 18 : mid - 14);
+      if (!strip) {
+        ctx.fillStyle = "rgba(233,234,231,0.22)";
+        ctx.fillText("-5 s", 24, floor + 18);
+        ctx.fillText("now", width - 52, floor + 18);
+      }
     };
 
     const tick = (now: number) => {
@@ -297,7 +300,7 @@ export default function Pulse() {
       data-probe="pulse trace"
       data-component="<Pulse>"
       data-source="requestAnimationFrame deltas"
-      className="pointer-events-none absolute inset-0 hidden h-full w-full md:block"
+      className="pointer-events-none relative h-[108px] w-full md:absolute md:inset-0 md:-z-10 md:h-full"
     />
   );
 }
