@@ -82,7 +82,9 @@ export function pushEvent(
   const entry: RuntimeEvent = { ...event, id: nextId++ };
   snapshot = {
     ...snapshot,
-    events: [entry, ...snapshot.events].slice(0, limit),
+    events: [entry, ...snapshot.events]
+      .sort((a, b) => b.at - a.at)
+      .slice(0, limit),
   };
   emit();
 }

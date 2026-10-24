@@ -1,3 +1,84 @@
+## 2026-10-24 -- Finish review, no-JS state, raster provenance
+
+### What was done
+
+- **Finish review run.** Code-led build, no comp: the surface was judged against the direction
+  contract's OWN-WORLD and the craft floor. Verdict: **ship**, with the fixes below applied in
+  the same pass. No contradicted or missing rows remain.
+- **Contrast fixed system-wide.** `--color-faint` was 3.18:1 on the ground at 10-11px — a WCAG
+  AA failure across roughly 45 labels, timestamps, notes and footer lines. Raised to #7a817c
+  (4.99:1). Verified by a computed-style audit over every text node: zero failures at 1440 and
+  at 390.
+- **Mono stopped setting prose.** The two record notes were 10px JetBrains Mono sentences,
+  which DESIGN.md's Two-Voice Rule forbids. They are now 13px Archivo at 46ch, indented with
+  margin rather than padding so the measure is not eaten by the indent.
+- **Designed no-JS state.** A `<noscript>` style hides the canvas, the Run controls and the
+  "move or tab to inspect" hint; a note in the telemetry column states that the runtime layer
+  needs JavaScript and that the records and channels below are static. Captured with JavaScript
+  disabled at both widths.
+- **Event log is chronological.** `pushEvent` sorted by time; the log had been showing
+  0.060s / 0.032s / 0.054s because entries were prepended in push order, not time order.
+- **"Heaviest asset" renamed "largest transfer".** It reads `transferSize`, which is 0 for
+  cached files, so the old label could call a 6kb file the heaviest on a repeat visit.
+- **Trace labels no longer collide.** Labels within 76px of the previously drawn one are
+  skipped; ticks remain. Two events 11ms apart were overprinting at the right edge.
+- **Raster provenance.** `src/app/opengraph-image.png` now carries a PNG tEXt origin (authored
+  in-repo for this build, composed from the Runtime tokens, no external or generated source).
+  `impeccable embed-prompt --scan src/app public` reports 0 missing.
+- **Documentation reconciled.** DESIGN.md and `.impeccable/design.json` carry the new muted-grey
+  value; the sidecar's canonical/ramp and `generatedAt` were updated to match.
+
+### Interface changes made
+
+- `--color-faint`: #5b625e → #7a817c.
+- Record notes: sans 13px dim, `md:ml-` instead of `md:pl-`.
+- `data-requires-js` on the canvas, the Run buttons and the footer hint; `<noscript>` note and
+  style rule in `src/app/page.tsx`.
+- `RuntimeEvent` ordering: `pushEvent` now sorts by `at` descending before capping at 7.
+- `Pulse` skips event labels closer than 76px to the previous one.
+
+### What I struggled with / broke
+
+- **The shipped finish reviewer and documenter could not be spawned.** The harness enforces a
+  subagent depth limit of 1, and this session is already a subagent, so both roles ran inline
+  against `reference/degraded/finish-reviewer.md` and `reference/degraded/documenter.md`. The
+  substitution is disclosed in the report; the review is the builder's own pass, which is
+  weaker than a fresh context. An independent pass is still worth doing when one is available.
+- **`pkill -f "next start --port 3111"` killed my own shell**, because the pattern matched the
+  command line of the shell running it. Use `fuser -k <port>/tcp`. Rule added to AGENTS.md.
+- **Headless Firefox clamps its viewport at about 500x758**, so the 390px capture is an iframe
+  396px wide (390 content + 6px scrollbar) inside the live page, scrolled in 844px segments and
+  stitched. The seams land on section boundaries and no element is sticky or fixed in the
+  scrolled region, so the stitch is exact. Rule added to AGENTS.md.
+- The first capture of the trace caught the 5-second history buffer half-filled, which reads as
+  a flat line with a startup spike. The settled capture waits 6s; the half-filled state is
+  honest but not the page's steady look.
+
+### Test status
+
+```
+pnpm lint                    -> clean
+pnpm build                   -> Compiled successfully, 5/5 static pages
+impeccable detect --json src -> []
+embed-prompt --scan          -> 1 raster, 0 missing
+contrast audit (1440/390)    -> 0 failures
+overflow-x (1440/390)        -> none
+FCP 15-32 ms · long tasks 0 · layout shifts 0 · DOM 259
+```
+
+Interactions driven at 1440: identity focused (probe panel opens beside the block, live region
+announces, no clipping), Maison Fourrure Run (connecting overlay, then the live embed),
+no-JS at both widths.
+
+### Handoff to next agent
+
+- **Verdict scope:** `ship` covers the surface as captured after the fix batch. It is not a
+  substitute for the independent review the degraded path could not provide.
+- Remaining work: a test suite, the deploy step with `NEXT_PUBLIC_SITE_URL`, and the mobile
+  footer copy "move or tab to inspect", which says "move" on a touch screen where the gesture
+  is a tap (tapping a focusable region does focus it and open the probe).
+- The preview server for this pass ran on port 3111; stop it by port, not by process name.
+
 ## 2026-10-24 -- Mobile pulse restored, type ramp reconciled
 
 ### What was done

@@ -8,7 +8,7 @@ colors:
   raised-panel: "#0e1013"
   chalk: "#e9eae7"
   instrument-grey: "#8b918d"
-  muted-grey: "#5b625e"
+  muted-grey: "#7a817c"
   hairline: "rgba(233,234,231,0.14)"
 typography:
   display:
@@ -158,7 +158,7 @@ A dark instrument at rest, marked in chalk, with a single live signal.
 - **Raised Panel** (#0e1013): the probe panel and the hovered channel row. One tonal step up, never a shadow.
 - **Chalk** (#e9eae7): primary text and the trace's companion marks.
 - **Instrument Grey** (#8b918d): body copy, summaries, secondary readings.
-- **Muted Grey** (#5b625e): labels, metadata, units, timestamps.
+- **Muted Grey** (#7a817c): labels, metadata, units, timestamps.
 - **Hairline** (rgba(233,234,231,0.14)): every border and divider in the system.
 
 ### Named Rules

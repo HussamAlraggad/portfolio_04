@@ -9,6 +9,10 @@ import { site } from "@/lib/site";
 export default function Home() {
   return (
     <>
+      <noscript>
+        <style>{`[data-requires-js]{display:none!important}`}</style>
+      </noscript>
+
       <section className="relative isolate flex min-h-dvh flex-col">
         <header className="relative z-10 flex h-16 shrink-0 items-center justify-between border-b border-rule px-6 md:px-10">
           <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-faint">
@@ -69,6 +73,13 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col gap-10 lg:col-span-5 lg:col-start-8">
+            <noscript>
+              <p className="max-w-[34ch] text-[13px] leading-relaxed text-dim">
+                The runtime layer runs on JavaScript. Without it these readings
+                stay empty and the live modules do not start; the records and
+                channels below are static.
+              </p>
+            </noscript>
             <Telemetry />
             <EventLog />
           </div>
@@ -80,7 +91,10 @@ export default function Home() {
           <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-faint">
             Master&apos;s candidate · 2026
           </p>
-          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-faint">
+          <p
+            data-requires-js
+            className="font-mono text-[10px] uppercase tracking-[0.2em] text-faint"
+          >
             Move or tab to inspect
           </p>
         </footer>

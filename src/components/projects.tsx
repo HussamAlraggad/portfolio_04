@@ -112,6 +112,7 @@ export default function Projects() {
                   {project.embeddable && project.url ? (
                     <button
                       type="button"
+                      data-requires-js
                       onClick={() => run(project.slug)}
                       aria-expanded={open}
                       className="border border-rule px-4 py-2 font-mono text-[10px] uppercase tracking-[0.2em] text-ink transition-colors hover:border-signal/60 hover:text-signal"
@@ -143,7 +144,7 @@ export default function Projects() {
               </div>
 
               {project.note ? (
-                <p className="pb-5 font-mono text-[10px] leading-relaxed text-faint md:pl-[calc(8.333%+2rem)]">
+                <p className="max-w-[46ch] pb-5 text-[13px] leading-relaxed text-dim md:ml-[calc(8.333%+2rem)]">
                   {project.note}
                 </p>
               ) : null}

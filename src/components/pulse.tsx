@@ -127,6 +127,7 @@ export default function Pulse() {
 
       ctx.font = "10px ui-monospace, monospace";
 
+      let lastLabelX = Number.POSITIVE_INFINITY;
       for (const event of events) {
         const age = now - event.at;
         if (age < 0 || age > WINDOW_MS) continue;
@@ -139,6 +140,9 @@ export default function Pulse() {
         ctx.moveTo(x + 0.5, floor);
         ctx.lineTo(x + 0.5, floor - 16);
         ctx.stroke();
+
+        if (Math.abs(x - lastLabelX) < 76) continue;
+        lastLabelX = x;
         ctx.fillStyle = warn
           ? "rgba(224,162,43,0.85)"
           : "rgba(233,234,231,0.42)";
@@ -229,7 +233,7 @@ export default function Pulse() {
       const name = heaviest.name.split("/").pop()?.split("?")[0] ?? "asset";
       pushEvent({
         at: heaviest.startTime,
-        label: "heaviest asset",
+        label: "largest transfer",
         detail: `${name} · ${Math.round((heaviest.transferSize ?? 0) / 1024)} kb`,
         kind: "net",
       });
@@ -300,6 +304,7 @@ export default function Pulse() {
       data-probe="pulse trace"
       data-component="<Pulse>"
       data-source="requestAnimationFrame deltas"
+      data-requires-js
       className="pointer-events-none relative h-[108px] w-full md:absolute md:inset-0 md:-z-10 md:h-full"
     />
   );

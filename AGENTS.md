@@ -27,4 +27,10 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - **Nothing on screen that is not measured.** Any figure shown in the runtime surface must come
   from a real API (`PerformanceObserver`, rAF deltas, resource timing). Illustrative numbers
   are a product-truth failure here, not a placeholder.
+- **Stop the preview server by port, not by name.** `pkill -f "next start"` also matches the
+  shell command that runs it and kills the session mid-command. Use `fuser -k <port>/tcp`.
+- **Capture 390px through a sized iframe.** Headless Firefox clamps its own viewport to about
+  500x758, so a true 390px mobile render is an iframe 396px wide (390 content plus the 6px
+  scrollbar) inside the live page, scrolled and stitched segment by segment. A bare 500px
+  capture is not the mobile breakpoint target.
 

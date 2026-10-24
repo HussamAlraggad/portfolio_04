@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-24T04:30:00.000Z",
+  "generatedAt": "2026-10-24T11:29:15.000Z",
   "title": "Design System: Runtime",
   "extensions": {
     "colorMeta": {
@@ -97,16 +97,16 @@
       "muted-grey": {
         "role": "neutral",
         "displayName": "Muted Grey",
-        "canonical": "oklch(47% 0.008 150)",
+        "canonical": "oklch(60% 0.011 155)",
         "tonalRamp": [
-          "oklch(15% 0.008 150)",
-          "oklch(26% 0.008 150)",
-          "oklch(37% 0.008 150)",
-          "oklch(47% 0.008 150)",
-          "oklch(59% 0.008 150)",
-          "oklch(70% 0.008 150)",
-          "oklch(81% 0.008 150)",
-          "oklch(92% 0.008 150)"
+          "oklch(15% 0.011 155)",
+          "oklch(26% 0.011 155)",
+          "oklch(37% 0.011 155)",
+          "oklch(48% 0.011 155)",
+          "oklch(60% 0.011 155)",
+          "oklch(71% 0.011 155)",
+          "oklch(82% 0.011 155)",
+          "oklch(93% 0.011 155)"
         ]
       }
     },
@@ -162,7 +162,7 @@
       "refersTo": "link-channel",
       "description": "A contact channel: label, handle, and a direction mark.",
       "html": "<a class=\"ds-channel\" href=\"https://github.com/HussamAlraggad\"><span class=\"ds-channel-k\">GitHub</span><span class=\"ds-channel-v\">@HussamAlraggad</span><span class=\"ds-channel-a\">\u2197</span></a>",
-      "css": ".ds-channel { display: grid; grid-template-columns: 110px 1fr 32px; align-items: baseline; gap: 24px; padding: 20px 8px; border-bottom: 1px solid rgba(233,234,231,0.14); text-decoration: none; color: #e9eae7; transition: background 150ms cubic-bezier(0.4,0,0.2,1); } .ds-channel:hover { background: #0e1013; } .ds-channel:hover .ds-channel-v, .ds-channel:hover .ds-channel-a { color: #5be49b; } .ds-channel:focus-visible { outline: 1px solid #5be49b; outline-offset: 3px; } .ds-channel-k { font-family: ui-monospace, monospace; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: #5b625e; } .ds-channel-v { font-family: Archivo, sans-serif; font-size: 17px; letter-spacing: -0.01em; } .ds-channel-a { text-align: right; font-family: ui-monospace, monospace; font-size: 13px; color: #5b625e; }"
+      "css": ".ds-channel { display: grid; grid-template-columns: 110px 1fr 32px; align-items: baseline; gap: 24px; padding: 20px 8px; border-bottom: 1px solid rgba(233,234,231,0.14); text-decoration: none; color: #e9eae7; transition: background 150ms cubic-bezier(0.4,0,0.2,1); } .ds-channel:hover { background: #0e1013; } .ds-channel:hover .ds-channel-v, .ds-channel:hover .ds-channel-a { color: #5be49b; } .ds-channel:focus-visible { outline: 1px solid #5be49b; outline-offset: 3px; } .ds-channel-k { font-family: ui-monospace, monospace; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: #7a817c; } .ds-channel-v { font-family: Archivo, sans-serif; font-size: 17px; letter-spacing: -0.01em; } .ds-channel-a { text-align: right; font-family: ui-monospace, monospace; font-size: 13px; color: #7a817c; }"
     },
     {
       "name": "Probe Panel",
@@ -170,7 +170,7 @@
       "refersTo": "probe-panel",
       "description": "The signature component: names the component, source, node count and box of whatever sits beneath the pointer.",
       "html": "<div class=\"ds-probe\"><p class=\"ds-probe-name\">identity</p><div class=\"ds-probe-row\"><span>component</span><span>&lt;Home&gt;</span></div><div class=\"ds-probe-row\"><span>source</span><span>src/lib/site.ts</span></div><div class=\"ds-probe-row\"><span>nodes</span><span>4</span></div><div class=\"ds-probe-row\"><span>box</span><span>664\u00d7240</span></div></div>",
-      "css": ".ds-probe { width: 250px; background: #0e1013; border: 1px solid rgba(233,234,231,0.14); padding: 12px; box-shadow: 0 16px 40px -12px rgba(0,0,0,0.9); font-family: ui-monospace, monospace; font-size: 10px; color: #e9eae7; } .ds-probe-name { margin: 0 0 8px; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #5be49b; } .ds-probe-row { display: flex; justify-content: space-between; gap: 12px; line-height: 1.6; } .ds-probe-row span:first-child { color: #5b625e; } .ds-probe-row span:last-child { color: #8b918d; font-variant-numeric: tabular-nums; }"
+      "css": ".ds-probe { width: 250px; background: #0e1013; border: 1px solid rgba(233,234,231,0.14); padding: 12px; box-shadow: 0 16px 40px -12px rgba(0,0,0,0.9); font-family: ui-monospace, monospace; font-size: 10px; color: #e9eae7; } .ds-probe-name { margin: 0 0 8px; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #5be49b; } .ds-probe-row { display: flex; justify-content: space-between; gap: 12px; line-height: 1.6; } .ds-probe-row span:first-child { color: #7a817c; } .ds-probe-row span:last-child { color: #8b918d; font-variant-numeric: tabular-nums; }"
     },
     {
       "name": "Telemetry Row",
@@ -178,7 +178,7 @@
       "refersTo": "telemetry-row",
       "description": "A single measured reading: label, value, unit.",
       "html": "<div class=\"ds-tele\"><span class=\"ds-tele-k\">frame</span><span class=\"ds-tele-v\">16.7 <em>ms</em></span></div>",
-      "css": ".ds-tele { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; font-family: ui-monospace, monospace; } .ds-tele-k { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #5b625e; } .ds-tele-v { font-size: 12px; color: #e9eae7; font-variant-numeric: tabular-nums; } .ds-tele-v em { font-style: normal; font-size: 10px; color: #5b625e; margin-left: 4px; }"
+      "css": ".ds-tele { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; font-family: ui-monospace, monospace; } .ds-tele-k { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #7a817c; } .ds-tele-v { font-size: 12px; color: #e9eae7; font-variant-numeric: tabular-nums; } .ds-tele-v em { font-style: normal; font-size: 10px; color: #7a817c; margin-left: 4px; }"
     },
     {
       "name": "Record Row",
@@ -186,7 +186,7 @@
       "refersTo": "record-row",
       "description": "One project as a record: index, name and stack, summary, status, actions.",
       "html": "<div class=\"ds-record\"><span class=\"ds-record-i\">01</span><div><p class=\"ds-record-name\">Maison Fourrure</p><p class=\"ds-record-meta\">TypeScript \u00b7 2026</p></div><p class=\"ds-record-sum\">Age-gated luxury boutique prototype: entry, product discovery, and checkout.</p><span class=\"ds-status\"><span class=\"ds-status-dot\"></span>live</span><div class=\"ds-record-act\"><button class=\"ds-run\" type=\"button\">Run</button></div></div>",
-      "css": ".ds-record { display: grid; grid-template-columns: 40px 1.1fr 1.4fr 110px 120px; gap: 24px; align-items: baseline; padding: 28px 0; border-bottom: 1px solid rgba(233,234,231,0.14); } .ds-record-i { font-family: ui-monospace, monospace; font-size: 10px; color: #5b625e; } .ds-record-name { margin: 0; font-family: Archivo, sans-serif; font-size: 20px; font-weight: 500; letter-spacing: -0.02em; color: #e9eae7; } .ds-record-meta { margin: 4px 0 0; font-family: ui-monospace, monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #5b625e; } .ds-record-sum { margin: 0; font-family: Archivo, sans-serif; font-size: 13px; line-height: 1.65; color: #8b918d; } .ds-record-act { text-align: right; }"
+      "css": ".ds-record { display: grid; grid-template-columns: 40px 1.1fr 1.4fr 110px 120px; gap: 24px; align-items: baseline; padding: 28px 0; border-bottom: 1px solid rgba(233,234,231,0.14); } .ds-record-i { font-family: ui-monospace, monospace; font-size: 10px; color: #7a817c; } .ds-record-name { margin: 0; font-family: Archivo, sans-serif; font-size: 20px; font-weight: 500; letter-spacing: -0.02em; color: #e9eae7; } .ds-record-meta { margin: 4px 0 0; font-family: ui-monospace, monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #7a817c; } .ds-record-sum { margin: 0; font-family: Archivo, sans-serif; font-size: 13px; line-height: 1.65; color: #8b918d; } .ds-record-act { text-align: right; }"
     },
     {
       "name": "Status Dot",
@@ -202,7 +202,7 @@
       "refersTo": "telemetry-row",
       "description": "The top rail: runtime label on the left, availability on the right.",
       "html": "<header class=\"ds-rail\"><span>Runtime / 001</span><span class=\"ds-rail-status\"><span class=\"ds-status-dot\"></span>Open to internships</span></header>",
-      "css": ".ds-rail { display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0 40px; border-bottom: 1px solid rgba(233,234,231,0.14); font-family: ui-monospace, monospace; font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: #5b625e; } .ds-rail-status { display: inline-flex; align-items: center; gap: 8px; letter-spacing: 0.2em; color: #8b918d; } .ds-rail-status .ds-status-dot { width: 6px; height: 6px; border-radius: 50%; background: #5be49b; }"
+      "css": ".ds-rail { display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0 40px; border-bottom: 1px solid rgba(233,234,231,0.14); font-family: ui-monospace, monospace; font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: #7a817c; } .ds-rail-status { display: inline-flex; align-items: center; gap: 8px; letter-spacing: 0.2em; color: #8b918d; } .ds-rail-status .ds-status-dot { width: 6px; height: 6px; border-radius: 50%; background: #5be49b; }"
     }
   ],
   "narrative": {
