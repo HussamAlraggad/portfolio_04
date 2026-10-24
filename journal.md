@@ -1,3 +1,44 @@
+## 2026-10-24 -- Pushed to origin; remaining work deferred
+
+### What was done
+
+- Pushed `afb4dec` and `b1df6ac` to `origin/main`. Tree is in sync, nothing outstanding.
+- Added `DESIGN.md` and `.impeccable/design.json` (previous entry).
+
+### Interface changes made
+
+- None.
+
+### What I struggled with / broke
+
+- Beads is not initialised in this repo, so the deferred items live here rather than as tracked
+  issues. Say the word and `bd init` plus one issue per item is a five-minute job.
+
+### Test status
+
+```
+pnpm lint    -> clean
+pnpm build   -> Compiled successfully, 4/4 static pages generated
+git status   -> up to date with origin/main
+```
+
+### Handoff to next agent -- deferred to the next session
+
+1. **Embed loading and error states.** If a Netlify deployment is down, the Run control opens a
+   blank iframe with no explanation. Needs a loading state and a failure state that names the
+   problem and offers the repository.
+2. **Keyboard path for the probe.** The probe is pointer-only, while the footer says "Move to
+   inspect". Keyboard users get nothing. Either make probed regions focusable and show the
+   panel on focus, or change the footer copy to match what exists.
+3. **Mobile pulse.** The trace is `hidden md:block` because it collided with telemetry at 390px.
+   This is a deviation from the brief and should be redesigned rather than left hidden.
+4. **No test suite.** There is nothing to regress against. At minimum: a render smoke test and a
+   check that every outbound link in `src/lib/site.ts` resolves.
+5. **Deploy step.** Pick a host, then set `NEXT_PUBLIC_SITE_URL` at build time so metadata and the
+   Open Graph image resolve to the real origin instead of `localhost:3000`.
+6. **`/impeccable finish` review** was never run. The build was self-reviewed, not reviewed by the
+   shipped finish reviewer, so treat the current state as unreviewed craft.
+
 ## 2026-10-24 -- Channels section and live-link handling
 
 ### What was done
