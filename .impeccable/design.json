@@ -1,0 +1,240 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-24T04:30:00.000Z",
+  "title": "Design System: Runtime",
+  "extensions": {
+    "colorMeta": {
+      "signal-green": {
+        "role": "primary",
+        "displayName": "Signal Green",
+        "canonical": "oklch(84% 0.16 155)",
+        "tonalRamp": [
+          "oklch(15% 0.16 155)",
+          "oklch(26% 0.16 155)",
+          "oklch(37% 0.16 155)",
+          "oklch(48% 0.16 155)",
+          "oklch(59% 0.16 155)",
+          "oklch(70% 0.16 155)",
+          "oklch(81% 0.16 155)",
+          "oklch(92% 0.16 155)"
+        ]
+      },
+      "caution-amber": {
+        "role": "primary",
+        "displayName": "Caution Amber",
+        "canonical": "oklch(75% 0.14 75)",
+        "tonalRamp": [
+          "oklch(15% 0.14 75)",
+          "oklch(26% 0.14 75)",
+          "oklch(37% 0.14 75)",
+          "oklch(48% 0.14 75)",
+          "oklch(59% 0.14 75)",
+          "oklch(70% 0.14 75)",
+          "oklch(81% 0.14 75)",
+          "oklch(92% 0.14 75)"
+        ]
+      },
+      "unlit-ground": {
+        "role": "neutral",
+        "displayName": "Unlit Ground",
+        "canonical": "oklch(15% 0.006 250)",
+        "tonalRamp": [
+          "oklch(10% 0.006 250)",
+          "oklch(20% 0.006 250)",
+          "oklch(30% 0.006 250)",
+          "oklch(40% 0.006 250)",
+          "oklch(50% 0.006 250)",
+          "oklch(60% 0.006 250)",
+          "oklch(70% 0.006 250)",
+          "oklch(80% 0.006 250)"
+        ]
+      },
+      "raised-panel": {
+        "role": "neutral",
+        "displayName": "Raised Panel",
+        "canonical": "oklch(18% 0.006 250)",
+        "tonalRamp": [
+          "oklch(12% 0.006 250)",
+          "oklch(22% 0.006 250)",
+          "oklch(32% 0.006 250)",
+          "oklch(42% 0.006 250)",
+          "oklch(52% 0.006 250)",
+          "oklch(62% 0.006 250)",
+          "oklch(72% 0.006 250)",
+          "oklch(82% 0.006 250)"
+        ]
+      },
+      "chalk": {
+        "role": "neutral",
+        "displayName": "Chalk",
+        "canonical": "oklch(93% 0.004 120)",
+        "tonalRamp": [
+          "oklch(15% 0.004 120)",
+          "oklch(26% 0.004 120)",
+          "oklch(37% 0.004 120)",
+          "oklch(48% 0.004 120)",
+          "oklch(59% 0.004 120)",
+          "oklch(70% 0.004 120)",
+          "oklch(81% 0.004 120)",
+          "oklch(93% 0.004 120)"
+        ]
+      },
+      "instrument-grey": {
+        "role": "neutral",
+        "displayName": "Instrument Grey",
+        "canonical": "oklch(64% 0.006 150)",
+        "tonalRamp": [
+          "oklch(15% 0.006 150)",
+          "oklch(26% 0.006 150)",
+          "oklch(37% 0.006 150)",
+          "oklch(48% 0.006 150)",
+          "oklch(59% 0.006 150)",
+          "oklch(64% 0.006 150)",
+          "oklch(78% 0.006 150)",
+          "oklch(90% 0.006 150)"
+        ]
+      },
+      "muted-grey": {
+        "role": "neutral",
+        "displayName": "Muted Grey",
+        "canonical": "oklch(47% 0.008 150)",
+        "tonalRamp": [
+          "oklch(15% 0.008 150)",
+          "oklch(26% 0.008 150)",
+          "oklch(37% 0.008 150)",
+          "oklch(47% 0.008 150)",
+          "oklch(59% 0.008 150)",
+          "oklch(70% 0.008 150)",
+          "oklch(81% 0.008 150)",
+          "oklch(92% 0.008 150)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The name only. Nothing competes with it." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles: Records, Channels." },
+      "title": { "displayName": "Title", "purpose": "Record names in the list." },
+      "body": { "displayName": "Body", "purpose": "Claims and project summaries, 46ch maximum." },
+      "label": { "displayName": "Label", "purpose": "Metadata, units, timestamps and control text. Always mono." }
+    },
+    "shadows": [
+      {
+        "name": "probe-lift",
+        "value": "0 16px 40px -12px rgba(0,0,0,0.9)",
+        "purpose": "The floating probe panel only. It is the single shadow in the system because the probe is the only element that floats above the page."
+      }
+    ],
+    "motion": [
+      { "name": "state-transition", "value": "150ms cubic-bezier(0.4, 0, 0.2, 1)", "purpose": "Colour and border changes on controls, links and rows." },
+      { "name": "probe-fade", "value": "120ms linear", "purpose": "The probe panel appearing and disappearing." },
+      { "name": "arrow-nudge", "value": "150ms cubic-bezier(0.4, 0, 0.2, 1)", "purpose": "The 4px translate on a control arrow during hover." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Correspondence Button",
+      "kind": "button",
+      "refersTo": "button-correspondence",
+      "description": "The primary action. A hairline-bordered control with a live arrow.",
+      "html": "<a class=\"ds-btn\" href=\"mailto:hussamraedalraggad@gmail.com\">Correspondence <span class=\"ds-btn-arrow\">\u2192</span></a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; gap: 16px; border: 1px solid rgba(233,234,231,0.14); background: transparent; color: #e9eae7; padding: 12px 20px; font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; text-decoration: none; transition: color 150ms cubic-bezier(0.4,0,0.2,1), border-color 150ms cubic-bezier(0.4,0,0.2,1); } .ds-btn:hover { color: #5be49b; border-color: rgba(91,228,155,0.6); } .ds-btn:focus-visible { outline: 1px solid #5be49b; outline-offset: 3px; } .ds-btn-arrow { color: #5be49b; }"
+    },
+    {
+      "name": "Run Button",
+      "kind": "button",
+      "refersTo": "button-run",
+      "description": "Secondary control that expands a live deployment in place.",
+      "html": "<button class=\"ds-run\" type=\"button\">Run</button>",
+      "css": ".ds-run { border: 1px solid rgba(233,234,231,0.14); background: transparent; color: #e9eae7; padding: 8px 16px; font-family: ui-monospace, monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: color 150ms cubic-bezier(0.4,0,0.2,1), border-color 150ms cubic-bezier(0.4,0,0.2,1); } .ds-run:hover { color: #5be49b; border-color: rgba(91,228,155,0.6); } .ds-run:focus-visible { outline: 1px solid #5be49b; outline-offset: 3px; }"
+    },
+    {
+      "name": "Channel Row",
+      "kind": "card",
+      "refersTo": "link-channel",
+      "description": "A contact channel: label, handle, and a direction mark.",
+      "html": "<a class=\"ds-channel\" href=\"https://github.com/HussamAlraggad\"><span class=\"ds-channel-k\">GitHub</span><span class=\"ds-channel-v\">@HussamAlraggad</span><span class=\"ds-channel-a\">\u2197</span></a>",
+      "css": ".ds-channel { display: grid; grid-template-columns: 110px 1fr 32px; align-items: baseline; gap: 24px; padding: 20px 8px; border-bottom: 1px solid rgba(233,234,231,0.14); text-decoration: none; color: #e9eae7; transition: background 150ms cubic-bezier(0.4,0,0.2,1); } .ds-channel:hover { background: #0e1013; } .ds-channel:hover .ds-channel-v, .ds-channel:hover .ds-channel-a { color: #5be49b; } .ds-channel:focus-visible { outline: 1px solid #5be49b; outline-offset: 3px; } .ds-channel-k { font-family: ui-monospace, monospace; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: #5b625e; } .ds-channel-v { font-family: Archivo, sans-serif; font-size: 17px; letter-spacing: -0.01em; } .ds-channel-a { text-align: right; font-family: ui-monospace, monospace; font-size: 13px; color: #5b625e; }"
+    },
+    {
+      "name": "Probe Panel",
+      "kind": "custom",
+      "refersTo": "probe-panel",
+      "description": "The signature component: names the component, source, node count and box of whatever sits beneath the pointer.",
+      "html": "<div class=\"ds-probe\"><p class=\"ds-probe-name\">identity</p><div class=\"ds-probe-row\"><span>component</span><span>&lt;Home&gt;</span></div><div class=\"ds-probe-row\"><span>source</span><span>src/lib/site.ts</span></div><div class=\"ds-probe-row\"><span>nodes</span><span>4</span></div><div class=\"ds-probe-row\"><span>box</span><span>664\u00d7240</span></div></div>",
+      "css": ".ds-probe { width: 250px; background: #0e1013; border: 1px solid rgba(233,234,231,0.14); padding: 12px; box-shadow: 0 16px 40px -12px rgba(0,0,0,0.9); font-family: ui-monospace, monospace; font-size: 10px; color: #e9eae7; } .ds-probe-name { margin: 0 0 8px; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #5be49b; } .ds-probe-row { display: flex; justify-content: space-between; gap: 12px; line-height: 1.6; } .ds-probe-row span:first-child { color: #5b625e; } .ds-probe-row span:last-child { color: #8b918d; font-variant-numeric: tabular-nums; }"
+    },
+    {
+      "name": "Telemetry Row",
+      "kind": "custom",
+      "refersTo": "telemetry-row",
+      "description": "A single measured reading: label, value, unit.",
+      "html": "<div class=\"ds-tele\"><span class=\"ds-tele-k\">frame</span><span class=\"ds-tele-v\">16.7 <em>ms</em></span></div>",
+      "css": ".ds-tele { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; font-family: ui-monospace, monospace; } .ds-tele-k { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #5b625e; } .ds-tele-v { font-size: 12px; color: #e9eae7; font-variant-numeric: tabular-nums; } .ds-tele-v em { font-style: normal; font-size: 10px; color: #5b625e; margin-left: 4px; }"
+    },
+    {
+      "name": "Record Row",
+      "kind": "card",
+      "refersTo": "record-row",
+      "description": "One project as a record: index, name and stack, summary, status, actions.",
+      "html": "<div class=\"ds-record\"><span class=\"ds-record-i\">01</span><div><p class=\"ds-record-name\">Maison Fourrure</p><p class=\"ds-record-meta\">TypeScript \u00b7 2026</p></div><p class=\"ds-record-sum\">Age-gated luxury boutique prototype: entry, product discovery, and checkout.</p><span class=\"ds-status\"><span class=\"ds-status-dot\"></span>live</span><div class=\"ds-record-act\"><button class=\"ds-run\" type=\"button\">Run</button></div></div>",
+      "css": ".ds-record { display: grid; grid-template-columns: 40px 1.1fr 1.4fr 110px 120px; gap: 24px; align-items: baseline; padding: 28px 0; border-bottom: 1px solid rgba(233,234,231,0.14); } .ds-record-i { font-family: ui-monospace, monospace; font-size: 10px; color: #5b625e; } .ds-record-name { margin: 0; font-family: Archivo, sans-serif; font-size: 20px; font-weight: 500; letter-spacing: -0.02em; color: #e9eae7; } .ds-record-meta { margin: 4px 0 0; font-family: ui-monospace, monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #5b625e; } .ds-record-sum { margin: 0; font-family: Archivo, sans-serif; font-size: 13px; line-height: 1.65; color: #8b918d; } .ds-record-act { text-align: right; }"
+    },
+    {
+      "name": "Status Dot",
+      "kind": "custom",
+      "refersTo": "telemetry-row",
+      "description": "The only circular element besides the trace head. Encodes live versus in progress.",
+      "html": "<span class=\"ds-status\"><span class=\"ds-status-dot\"></span>live</span>",
+      "css": ".ds-status { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; font-family: ui-monospace, monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #8b918d; } .ds-status-dot { width: 6px; height: 6px; border-radius: 50%; background: #5be49b; }"
+    },
+    {
+      "name": "Header Rail",
+      "kind": "nav",
+      "refersTo": "telemetry-row",
+      "description": "The top rail: runtime label on the left, availability on the right.",
+      "html": "<header class=\"ds-rail\"><span>Runtime / 001</span><span class=\"ds-rail-status\"><span class=\"ds-status-dot\"></span>Open to internships</span></header>",
+      "css": ".ds-rail { display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0 40px; border-bottom: 1px solid rgba(233,234,231,0.14); font-family: ui-monospace, monospace; font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: #5b625e; } .ds-rail-status { display: inline-flex; align-items: center; gap: 8px; letter-spacing: 0.2em; color: #8b918d; } .ds-rail-status .ds-status-dot { width: 6px; height: 6px; border-radius: 50%; background: #5be49b; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Observable",
+    "overview": "The system behaves like a measuring instrument left running in a dark room. It does not present; it reports. Every surface is either a reading or the structure that holds a reading, and the page's own behaviour is part of what is on display. The frame trace, the telemetry column and the event log are not a dashboard bolted onto a portfolio \u2014 they are the portfolio's argument, made in the same voice as the type.\n\nThe register is quiet confidence. Nothing is raised in volume. Emphasis comes from scale and position, never from colour or inflated weight, and the only saturated colour on the page is reserved for live data. A visitor should read the calm as control rather than emptiness.\n\nThe system refuses three costumes explicitly: the dev-tools dashboard of panels and charts, the awards-site portfolio of oversized heroes and cursor effects, and the terminal theme of green-on-black and blinking cursors. It borrows the discipline of all three and the clothing of none.",
+    "keyCharacteristics": [
+      "Flat, unlit ground where 1px hairlines do all structural work.",
+      "One saturated colour, reserved for live data and live actions.",
+      "Zero radius on every container; circles appear only where a dot encodes state.",
+      "Tabular numerals on every figure, without exception.",
+      "Type held at one volume: large where it carries meaning, small and tracked out where it labels."
+    ],
+    "rules": [
+      { "name": "The One Signal Rule", "body": "Signal Green appears only where something is genuinely live or actionable. It never decorates, never fills a background, and never marks a static element. If it is on screen, it means something is happening.", "section": "colors" },
+      { "name": "The Two-Voice Rule", "body": "Archivo carries meaning; JetBrains Mono carries measurement. Mono never sets prose \u2014 the moment it does, the page becomes a terminal.", "section": "typography" },
+      { "name": "The Hairline Rule", "body": "Structure is drawn with 1px rules at 14% opacity. No boxes, no filled cards, no section backgrounds. If a boundary needs to exist, it is a line.", "section": "layout" },
+      { "name": "The Flat-By-Default Rule", "body": "Surfaces are flat. The probe's shadow is the single exception, and it exists because the probe is an overlay rather than a surface.", "section": "elevation" },
+      { "name": "The No-Radius Rule", "body": "Nothing is rounded. A rounded corner would soften the instrument into a product page; the hard corner is what makes a panel read as a panel.", "section": "shapes" }
+    ],
+    "dos": [
+      "Do reserve Signal Green for live data, live state, and the primary action's arrow.",
+      "Do set every figure in tabular numerals.",
+      "Do show an em dash when a measurement is unavailable, rather than a plausible-looking number.",
+      "Do separate structure with 1px hairlines at 14% opacity.",
+      "Do hold body copy to 46ch or less.",
+      "Do state a gap honestly in the interface, as the OS Geeks Hub record does."
+    ],
+    "donts": [
+      "Don't round a corner on any container.",
+      "Don't use a gradient as decoration. The only gradient in the system is the fill under the measured trace, and it is data.",
+      "Don't display a number that was not measured at runtime.",
+      "Don't set prose in monospace.",
+      "Don't build a dashboard of panels and charts.",
+      "Don't introduce an oversized hero, scroll-jacking, cursor effects, or a badge row.",
+      "Don't drift into terminal styling: no green-on-black, no blinking cursors, no monospace everywhere.",
+      "Don't animate for decoration. Motion belongs to arriving data."
+    ]
+  }
+}
