@@ -16,6 +16,8 @@ const mono = JetBrains_Mono({
 
 function resolveSiteUrl(): string {
   if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL;
+  if (process.env.URL) return process.env.URL;
+  if (process.env.DEPLOY_PRIME_URL) return process.env.DEPLOY_PRIME_URL;
   if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
     return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
   }
@@ -34,6 +36,7 @@ export const metadata: Metadata = {
       "Design engineer working on frontend systems and AI-leveraged software. A portfolio that measures itself.",
     type: "website",
     siteName: "Hussam Alraggad",
+    url: "/",
   },
   twitter: {
     card: "summary_large_image",

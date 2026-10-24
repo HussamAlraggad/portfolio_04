@@ -32,8 +32,9 @@ NEXT_PUBLIC_SITE_URL=https://your-domain.example pnpm build
 
 This is what absolute URLs in the metadata resolve against, including the Open Graph image.
 Without it the build falls back to `http://localhost:3000`, and social previews will point at
-a host nobody can reach. On Vercel, `VERCEL_PROJECT_PRODUCTION_URL` and `VERCEL_URL` are used
-automatically when the explicit variable is absent.
+a host nobody can reach. Netlify's `URL` and `DEPLOY_PRIME_URL` are used automatically, as are
+Vercel's `VERCEL_PROJECT_PRODUCTION_URL` and `VERCEL_URL`. Set `NEXT_PUBLIC_SITE_URL` only when
+you want to override both, such as a custom domain in front of a Netlify deploy.
 
 ## Content
 
