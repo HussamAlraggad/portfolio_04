@@ -1,8 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { projects } from "@/lib/site";
 import type { Project } from "@/lib/site";
+
+type Phase = "loading" | "ready" | "slow";
+
+const CONNECT_TIMEOUT_MS = 12000;
 
 function Status({ project }: { project: Project }) {
   const live = project.status === "live";
@@ -17,8 +21,47 @@ function Status({ project }: { project: Project }) {
   );
 }
 
+function hostOf(url: string) {
+  try {
+    return new URL(url).host;
+  } catch {
+    return url;
+  }
+}
+
 export default function Projects() {
   const [running, setRunning] = useState<string | null>(null);
+  const [phase, setPhase] = useState<Record<string, Phase>>({});
+  const timer = useRef<number | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (timer.current) window.clearTimeout(timer.current);
+    };
+  }, []);
+
+  const run = (slug: string) => {
+    if (timer.current) window.clearTimeout(timer.current);
+
+    if (running === slug) {
+      setRunning(null);
+      return;
+    }
+
+    setRunning(slug);
+    setPhase((current) => ({ ...current, [slug]: "loading" }));
+
+    timer.current = window.setTimeout(() => {
+      setPhase((current) =>
+        current[slug] === "loading" ? { ...current, [slug]: "slow" } : current,
+      );
+    }, CONNECT_TIMEOUT_MS);
+  };
+
+  const ready = (slug: string) => {
+    if (timer.current) window.clearTimeout(timer.current);
+    setPhase((current) => ({ ...current, [slug]: "ready" }));
+  };
 
   return (
     <section
@@ -39,6 +82,8 @@ export default function Projects() {
       <ul className="mt-10 border-t border-rule">
         {projects.map((project, index) => {
           const open = running === project.slug;
+          const current = phase[project.slug] ?? "loading";
+
           return (
             <li key={project.slug} className="border-b border-rule">
               <div className="grid grid-cols-1 gap-x-8 gap-y-4 py-7 md:grid-cols-12 md:items-baseline">
@@ -67,7 +112,7 @@ export default function Projects() {
                   {project.embeddable && project.url ? (
                     <button
                       type="button"
-                      onClick={() => setRunning(open ? null : project.slug)}
+                      onClick={() => run(project.slug)}
                       aria-expanded={open}
                       className="border border-rule px-4 py-2 font-mono text-[10px] uppercase tracking-[0.2em] text-ink transition-colors hover:border-signal/60 hover:text-signal"
                     >
@@ -107,7 +152,7 @@ export default function Projects() {
                 <div className="mb-7 border border-rule bg-[#0b0d10]">
                   <div className="flex items-center justify-between border-b border-rule px-4 py-2">
                     <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-faint">
-                      {new URL(project.url).host}
+                      {hostOf(project.url)}
                     </p>
                     <a
                       href={project.url}
@@ -118,12 +163,59 @@ export default function Projects() {
                       Open in tab
                     </a>
                   </div>
-                  <iframe
-                    src={project.url}
-                    title={`${project.name}, running live`}
-                    loading="lazy"
-                    className="h-[560px] w-full"
-                  />
+
+                  <div className="relative">
+                    {current !== "ready" ? (
+                      <div className="absolute inset-0 z-10 flex flex-col justify-center gap-3 bg-[#0b0d10] px-6">
+                        {current === "slow" ? (
+                          <>
+                            <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-warn">
+                              No response after {CONNECT_TIMEOUT_MS / 1000} seconds
+                            </p>
+                            <p className="max-w-[52ch] text-[13px] leading-relaxed text-dim">
+                              The deployment may be down. It opens in a tab if the
+                              site is reachable, and the source is always here.
+                            </p>
+                            <div className="flex flex-wrap items-center gap-5 pt-1">
+                              <a
+                                href={project.url}
+                                target="_blank"
+                                rel="noreferrer noopener"
+                                className="font-mono text-[10px] uppercase tracking-[0.2em] text-signal underline-offset-4 hover:underline"
+                              >
+                                Try in a tab ↗
+                              </a>
+                              <a
+                                href={project.repo}
+                                target="_blank"
+                                rel="noreferrer noopener"
+                                className="font-mono text-[10px] uppercase tracking-[0.2em] text-faint underline-offset-4 hover:underline"
+                              >
+                                Source
+                              </a>
+                            </div>
+                          </>
+                        ) : (
+                          <>
+                            <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-signal">
+                              Connecting
+                            </p>
+                            <p className="font-mono text-[11px] text-dim">
+                              {hostOf(project.url)} · loading in place
+                            </p>
+                          </>
+                        )}
+                      </div>
+                    ) : null}
+
+                    <iframe
+                      src={project.url}
+                      title={`${project.name}, running live`}
+                      loading="lazy"
+                      onLoad={() => ready(project.slug)}
+                      className="h-[560px] w-full"
+                    />
+                  </div>
                 </div>
               ) : null}
             </li>

@@ -21,6 +21,7 @@ export default function EventLog() {
   return (
     <section
       aria-label="Runtime events"
+      tabIndex={0}
       data-probe="event log"
       data-component="<EventLog>"
       data-source="PerformanceObserver"

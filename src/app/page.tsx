@@ -25,6 +25,9 @@ export default function Home() {
         <div className="relative z-10 grid flex-1 grid-cols-1 gap-12 px-6 py-10 md:px-10 lg:grid-cols-12 lg:gap-8">
           <div className="flex flex-col justify-between gap-12 lg:col-span-6">
             <div
+              tabIndex={0}
+              role="group"
+              aria-label="Identity"
               data-probe="identity"
               data-component="<Home>"
               data-source="src/lib/site.ts"
@@ -78,7 +81,7 @@ export default function Home() {
             Master&apos;s candidate · 2026
           </p>
           <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-faint">
-            Move to inspect
+            Move or tab to inspect
           </p>
         </footer>
       </section>

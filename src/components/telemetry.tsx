@@ -35,6 +35,8 @@ export default function Telemetry() {
 
   return (
     <dl
+      tabIndex={0}
+      aria-label="Live telemetry"
       data-probe="telemetry"
       data-component="<Telemetry>"
       data-source="PerformanceObserver + rAF"

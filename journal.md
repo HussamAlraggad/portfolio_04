@@ -1,3 +1,52 @@
+## 2026-10-24 -- Probe keyboard path and embed states
+
+### What was done
+
+- **Keyboard path for the probe.** The identity block, telemetry and event log are now focusable
+  regions (`tabIndex={0}` with accessible names), and the probe listens for `focusin`/`focusout`
+  as well as pointer events. On focus the panel anchors beside the region rather than the cursor.
+  A visually-hidden `aria-live` region announces the component, source, node count and box for
+  screen-reader users, and only when the trigger was focus, so pointer movement stays silent.
+- **Embed states.** Each live embed now runs a three-state machine: `loading` (named host,
+  "loading in place"), `ready` (overlay removed, iframe visible), and `slow` after a 12 second
+  timeout, which states that the deployment may be down and offers both a tab link and the
+  source. The timeout is `CONNECT_TIMEOUT_MS`, and the copy derives its number from that
+  constant so the two cannot drift apart.
+- Footer copy changed from "Move to inspect" to "Move or tab to inspect".
+
+### Interface changes made
+
+- Probed regions gained `tabIndex` and accessible names.
+- `Phase` type and `CONNECT_TIMEOUT_MS` constant in `src/components/projects.tsx`.
+
+### What I struggled with / broke
+
+- Verified the failure state by temporarily pointing Maison Fourrure at `http://10.255.255.1/`
+  and shortening the timeout to 2.5s. Both were reverted; `grep` confirms the real URL and the
+  12s constant are in place. Worth noting: the first version of that copy hardcoded "12 seconds"
+  next to a separate literal, which would have drifted the moment the timer changed.
+- Programmatic `element.click()` does not move focus in Firefox, so the probe panel stayed
+  visible over the Records section during testing. A real click focuses the button and fires
+  `focusout`. This is a testing artefact, not a bug, but it is worth knowing before someone
+  reports it as one.
+
+### Test status
+
+```
+pnpm lint    -> clean
+pnpm build   -> Compiled successfully, 4/4 static pages generated
+```
+
+Verified in the browser: focus on the identity region shows the panel anchored right with a
+focus ring and logs "inspect identity"; Run shows "Connecting" then the real Maison Fourrure
+site; an unreachable host produces "No response after 12 seconds" with both recovery links.
+
+### Handoff to next agent
+
+Remaining from the deferred list: mobile pulse redesign, a test suite, the `/impeccable finish`
+review, and the deploy step with `NEXT_PUBLIC_SITE_URL`. The finish review should come after the
+mobile work, not before.
+
 ## 2026-10-24 -- Pushed to origin; remaining work deferred
 
 ### What was done
