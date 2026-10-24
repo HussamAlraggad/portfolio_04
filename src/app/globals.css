@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ground: #08090b;
+  --color-raise: #0e1013;
+  --color-ink: #e9eae7;
+  --color-dim: #8b918d;
+  --color-faint: #5b625e;
+  --color-rule: rgba(233, 234, 231, 0.14);
+  --color-signal: #5be49b;
+  --color-warn: #e0a22b;
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono-data), ui-monospace, monospace;
+}
+
+html {
+  color-scheme: dark;
+  background: var(--color-ground);
+}
+
+body {
+  background: var(--color-ground);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-signal);
+  color: #06100a;
+}
+
+* {
+  scrollbar-color: var(--color-faint) var(--color-ground);
+  scrollbar-width: thin;
+}
+
+:focus-visible {
+  outline: 1px solid var(--color-signal);
+  outline-offset: 3px;
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+.rule-t {
+  border-top: 1px solid var(--color-rule);
+}
+
+.rule-b {
+  border-bottom: 1px solid var(--color-rule);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
